@@ -21,14 +21,14 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 
 	if (!s1)
 	{
-		s1 = malloc(1 * sizeof(char));
+		s1 = my_alloc(1 * sizeof(char));
 		if (!s1)
 			return (0);
 		s1[0] = 0;
 	}
 	if (s2 == NULL)
 		return (0);
-	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	str = my_alloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (0);
 	i = -1;
@@ -38,7 +38,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	while (s2[j])
 		str[i++] = s2[j++];
 	str[i] = 0;
-	free(s1);
+	// free(s1);
 	return (str);
 }
 
@@ -54,7 +54,7 @@ char	*set_the_line(char *line)
 		i++;
 	if (line[i] == '\n')
 		i++;
-	str = malloc(sizeof(char) * (i + 1));
+	str = my_alloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (0);
 	i = 0;
@@ -81,16 +81,16 @@ char	*set_next_line(char *line)
 		i++;
 	if (line[i] == '\0')
 	{
-		free(line);
+		// free(line);
 		return (0);
 	}
-	str = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+	str = my_alloc(sizeof(char) * (ft_strlen(line) - i + 1));
 	if (!str)
 		return (0);
 	i++;
 	while (line[i])
 		str[j++] = line[i++];
 	str[j] = 0;
-	free(line);
+	// free(line);
 	return (str);
 }

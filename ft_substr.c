@@ -20,10 +20,10 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (0);
 	if (start >= (unsigned int)ft_strlen(s))
-		return ((char *)ft_calloc(1, 1));
+		return ((char *)my_alloc( 1));
 	if (len > (unsigned int)ft_strlen(s))
 		len = ft_strlen(s);
-	str = malloc(len + 1);
+	str = my_alloc(len + 1);
 	if (!str)
 		return (0);
 	i = 0;

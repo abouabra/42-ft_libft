@@ -34,4 +34,8 @@ int		ft_strlen(char *s);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
 
+void	*my_alloc(size_t size);
+void	garbage_collector(void *adress, int arg);
+void	custom_exit(int exit_code);
+
 #endif

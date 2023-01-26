@@ -17,7 +17,7 @@ char	*read_fd(int fd, char *line)
 	char	*str;
 	int		counter;
 
-	str = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	str = my_alloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!str)
 		return (0);
 	counter = 1;
@@ -26,14 +26,14 @@ char	*read_fd(int fd, char *line)
 		counter = read(fd, str, BUFFER_SIZE);
 		if (counter == -1)
 		{
-			free(str);
-			free(line);
+			// free(str);
+			// free(line);
 			return (0);
 		}
 		str[counter] = '\0';
 		line = ft_strjoin_gnl(line, str);
 	}
-	free(str);
+	// free(str);
 	return (line);
 }
 

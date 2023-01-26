@@ -12,21 +12,6 @@
 
 #include "libft.h"
 
-
-static char	**error(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	return (0);
-}
-
 static int	c_count(char const *str, char c)
 {
 	int	count;
@@ -64,7 +49,7 @@ static char	*get_word(char const *s, char c, int *index)
 		wdlen++;
 		i++;
 	}
-	str = malloc((wdlen + 1) * (sizeof(char)));
+	str = my_alloc((wdlen + 1) * (sizeof(char)));
 	if (!str)
 		return (0);
 	i = 0;
@@ -86,14 +71,12 @@ char	**ft_split(char *s, char c)
 	index = 0;
 	i = 0;
 	c_occurence = c_count(s, c);
-	arr = malloc(sizeof(char *) * (c_occurence + 1));
+	arr = my_alloc(sizeof(char *) * (c_occurence + 1));
 	if (!arr)
 		return (0);
 	while (i < c_occurence)
 	{
 		arr[i] = get_word(s, c, &index);
-		if (!arr)
-			return (error(arr));
 		i++;
 	}
 	arr[i] = 0;

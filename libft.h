@@ -78,4 +78,10 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+void	*my_alloc(size_t size);
+void	garbage_collector(void *adress, int arg);
+void	custom_exit(int exit_code);
+
+
 #endif

@@ -61,7 +61,7 @@ char	*ft_itoa(int n)
 
 	nb = n;
 	len = int_len(n);
-	str = ft_calloc(len + 1, sizeof(char));
+	str = my_alloc(len + 1 * sizeof(char));
 	if (!str)
 		return (0);
 	len--;
