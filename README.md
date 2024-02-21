@@ -133,4 +133,4 @@ These are additional personal functions:
 
 ## Final Note
 
-The `libft` library is a work in progress and will be updated with additional functions and improvements over time. If you have any suggestions or feedback, please feel free to open an issue or submit a pull request.
+If you have any suggestions or feedback, please feel free to open an issue or submit a pull request.
