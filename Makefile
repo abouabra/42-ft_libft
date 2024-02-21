@@ -7,7 +7,9 @@ SRC= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.
 		gnl.c gnl_utils.c \
 		ft_dprintf.c ft_dprintf_utils.c my_alloc.c
 
-OBJS=$(SRC:.c=.o)
+OBJ_DIR = obj/
+SRC_DIR = src/
+OSRC = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 AR=ar -rcs
 NAME=libft.a
 
@@ -17,21 +19,48 @@ BLUE = \033[1;34m
 YELLOW = \033[1;33m
 RESET = \033[0m
 
-all: $(NAME)
+all: ascii $(NAME) 
 
-$(NAME): $(OBJS)
+$(NAME): $(OSRC)
 	@$(AR) $@ $^
 
-%.o:%.c libft.h
-	@printf "hana kan compili f$(GREEN) $< $(RESET) \n"
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) -Wall -Wextra -Werror -c $<  -o $@
 
 clean:
-	@rm -rf *.o
+	@rm -rf $(OBJ_DIR)
 
 fclean:
-	@rm -rf *.o libft.a
+	@rm -rf $(OBJ_DIR)
+	@rm -f $(NAME)
 
 re:fclean all
 
-.PHONY: all clean fclean re bonus%
+ascii:
+	@clear
+	@printf "$(GREEN)\
+                                                                                    bbbbbbbb                                                        \n\
+    ffffffffffffffff           tttt                                  lllllll   iiii b::::::b               ffffffffffffffff           tttt          \n\
+   f::::::::::::::::f       ttt:::t                                  l:::::l  i::::ib::::::b              f::::::::::::::::f       ttt:::t          \n\
+  f::::::::::::::::::f      t:::::t                                  l:::::l   iiii b::::::b             f::::::::::::::::::f      t:::::t          \n\
+  f::::::fffffff:::::f      t:::::t                                  l:::::l         b:::::b             f::::::fffffff:::::f      t:::::t          \n\
+  f:::::f       ffffffttttttt:::::ttttttt                             l::::l iiiiiii b:::::bbbbbbbbb     f:::::f       ffffffttttttt:::::ttttttt    \n\
+  f:::::f             t:::::::::::::::::t                             l::::l i:::::i b::::::::::::::bb   f:::::f             t:::::::::::::::::t    \n\
+ f:::::::ffffff       t:::::::::::::::::t                             l::::l  i::::i b::::::::::::::::b f:::::::ffffff       t:::::::::::::::::t    \n\
+ f::::::::::::f       tttttt:::::::tttttt                             l::::l  i::::i b:::::bbbbb:::::::bf::::::::::::f       tttttt:::::::tttttt    \n\
+ f::::::::::::f             t:::::t                                   l::::l  i::::i b:::::b    b::::::bf::::::::::::f             t:::::t          \n\
+ f:::::::ffffff             t:::::t                                   l::::l  i::::i b:::::b     b:::::bf:::::::ffffff             t:::::t          \n\
+  f:::::f                   t:::::t                                   l::::l  i::::i b:::::b     b:::::b f:::::f                   t:::::t          \n\
+  f:::::f                   t:::::t    tttttt                         l::::l  i::::i b:::::b     b:::::b f:::::f                   t:::::t    tttttt\n\
+ f:::::::f                  t::::::tttt:::::t                        l::::::li::::::ib:::::bbbbbb::::::bf:::::::f                  t::::::tttt:::::t\n\
+ f:::::::f                  tt::::::::::::::t                        l::::::li::::::ib::::::::::::::::b f:::::::f                  tt::::::::::::::t\n\
+ f:::::::f                    tt:::::::::::tt                        l::::::li::::::ib:::::::::::::::b  f:::::::f                    tt:::::::::::tt\n\
+ fffffffff                      ttttttttttt                          lllllllliiiiiiiibbbbbbbbbbbbbbbb   fffffffff                      ttttttttttt  \n\
+                                             ________________________                                                                               \n\
+                                             _::::::::::::::::::::::_                                                                              \n\
+                                             ________________________                                                                   $(RED)by: abouabra$(RESET)\n"
+
+
+
+.PHONY: all clean fclean re bonus
