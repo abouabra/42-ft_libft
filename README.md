@@ -8,7 +8,7 @@ ft_libft is a project at 42 School (École 42) that involves creating a library 
 To use the `libft` library in your projects, follow these steps:
 
 1. Clone the ft_libft repository: `git clone https://github.com/abouabra/42-ft_libft.git`
-2. Navigate to the ft_libft directory: `cd ft_libft`
+2. Navigate to the ft_libft directory: `cd 42-ft_libft`
 3. Compile the library using the provided Makefile: `make`.
 This will generate the `libft.a` static library file.
 4. Link `libft.a` to your project at compile time. You can do this by including the library in your compilation command or by adding it to your project's Makefile.
